@@ -10,7 +10,7 @@ import { AuthProvider } from "./context/AuthContext";
 import Orders from "./pages/Orders";
 
 function App() {
-  const [cart, setCart] = useState<Product[]>([]);
+  const [cart] = useState<Product[]>([]);
   const [showCart, setShowCart] = useState(false);
 
   return (
