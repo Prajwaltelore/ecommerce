@@ -14,7 +14,7 @@ const Home = () => {
   const [searchTerm, setSearchTerm] = useState("");
   const [categories, setCategories] = useState([]);
   const [categoryId, setCategoryId] = useState<number | null>(null);
-  const [sortOrder, setSortOrder] = useState(""); // "asc" | "desc"
+  const [sortOrder, setSortOrder] = useState("");
   const navigate = useNavigate();
 
   useEffect(() => {
@@ -38,8 +38,8 @@ const Home = () => {
 
     let url = "https://api.escuelajs.co/api/v1/products";
 
-    const res = await axios.get(url, { params });
-    let products = res.data;
+    const response = await axios.get(url, { params });
+    let products = response.data;
 
 
     if (sortOrder === "asc") {

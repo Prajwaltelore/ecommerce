@@ -17,20 +17,20 @@ export const AuthProvider: React.FC<{ children: React.ReactNode }> = ({
 
   useEffect(() => {
     const token = localStorage.getItem("access_token");
-    const storedUser = localStorage.getItem("user");
+    const user = localStorage.getItem("user");
 
-    if (storedUser) {
-      setUser(JSON.parse(storedUser));
+    if (user) {
+      setUser(JSON.parse(user));
     }
 
-    if (token && !storedUser) {
+    if (token && !user) {
       axios
         .get("https://api.escuelajs.co/api/v1/auth/profile", {
           headers: { Authorization: `Bearer ${token}` },
         })
-        .then((res) => {
-          setUser(res.data);
-          localStorage.setItem("user", JSON.stringify(res.data));
+        .then((response) => {
+          setUser(response.data);
+          localStorage.setItem("user", JSON.stringify(response.data));
         })
         .catch(() => {
           localStorage.removeItem("access_token");
